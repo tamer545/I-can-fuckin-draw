@@ -4,14 +4,12 @@ import actions.KeyHandler;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 public class Gui {
     private JFrame jf;
     private Draw draw;
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static int X, Y, WIDTH, HEIGHT;
+    public static int x, y, width, height;
 
     public void create() {
 
@@ -21,7 +19,7 @@ public class Gui {
         jf.setLocationRelativeTo(null);
         jf.setResizable(false);
         jf.setLayout(null);
-        jf.addKeyListener(new KeyHandler(this));
+        jf.addKeyListener(new KeyHandler());
 
         draw = new Draw();
         draw.setBounds(0, 0, jf.getWidth(), jf.getHeight());
@@ -31,10 +29,10 @@ public class Gui {
         jf.requestFocus();
         jf.setVisible(true);
 
-        X = jf.getX();
-        Y = jf.getY();
-        HEIGHT = jf.getHeight();
-        WIDTH = jf.getWidth();
+        x = jf.getX();
+        y = jf.getY();
+        height = jf.getHeight();
+        width = jf.getWidth();
 
 
     }
