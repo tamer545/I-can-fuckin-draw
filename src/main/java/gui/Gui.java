@@ -4,6 +4,8 @@ import actions.KeyHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 public class Gui {
     private JFrame jf;
@@ -13,11 +15,35 @@ public class Gui {
 
     public void create() {
 
+        ComponentListener componentListener = new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e) {
+                jf.setLocationRelativeTo(null);
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e) {
+
+            }
+        };
+
         jf = new JFrame("Draw");
         jf.setSize(screenSize.width, screenSize.height);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setLocationRelativeTo(null);
         jf.setResizable(false);
+        jf.addComponentListener(componentListener);
         jf.setLayout(null);
         jf.addKeyListener(new KeyHandler());
 

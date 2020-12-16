@@ -7,7 +7,6 @@ import gui.Gui;
 public class MainDraw {
 
     public static void main(String[] args) {
-        LafManager.install(new DarculaTheme());
         Gui gui = new Gui();
         gui.create();
     }

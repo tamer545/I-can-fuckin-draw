@@ -62,8 +62,15 @@ public class KeyHandler implements KeyListener {
             case KeyEvent.VK_7 -> Draw.pensize = 14;
             case KeyEvent.VK_8 -> Draw.pensize = 16;
             case KeyEvent.VK_9 -> Draw.pensize = 18;
-            case KeyEvent.VK_O-> ovalMode = true;
-            case KeyEvent.VK_R -> rectMode = true;
+            case KeyEvent.VK_0 -> Draw.pensize = 36;
+            case KeyEvent.VK_O -> {
+                rectMode = false;
+                ovalMode = true;
+            }
+            case KeyEvent.VK_R -> {
+                ovalMode = false;
+                rectMode = true;
+            }
             case KeyEvent.VK_P -> {
                 BufferedImage screencapture;
                 try {
@@ -89,6 +96,8 @@ public class KeyHandler implements KeyListener {
             case KeyEvent.VK_NUMPAD4 -> Draw.color = Color.GRAY;
             case KeyEvent.VK_NUMPAD5 -> Draw.color = Color.GREEN;
             case KeyEvent.VK_NUMPAD6 -> Draw.color = Color.PINK;
+            case KeyEvent.VK_NUMPAD7 -> Draw.color = Color.BLUE;
+
 
 
         }
