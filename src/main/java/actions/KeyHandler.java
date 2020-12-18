@@ -71,6 +71,7 @@ public class KeyHandler implements KeyListener {
                 rectMode = true;
             }
             case KeyEvent.VK_S -> {
+                Draw.color = Color.BLACK;
                 ovalMode = false;
                 rectMode = false;
             }
