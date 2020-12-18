@@ -49,10 +49,10 @@ public class Draw extends JPanel {
         g2d.drawString("O: Oval Mode", xoff, 525);
         g2d.drawString("R: Rect Mode", xoff, 575);
         g2d.drawString("E: Erase Mode", xoff, 625);
-        g2d.drawString("S: Standard Mode", xoff, 625);
+        g2d.drawString("S: Standard Mode", xoff, 675);
 
         g2d.setFont(new Font("Arial", Font.HANGING_BASELINE, 36));
-        g2d.drawString(words[wordChooser], 900, 75);
+        g2d.drawString(words[wordChooser], 800, 75);
 
 
     }

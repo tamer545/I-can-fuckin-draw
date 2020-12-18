@@ -17,6 +17,8 @@ public class SaveFileView extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(mainPanel);
         pack();
+        setLocationRelativeTo(null);
+        setAlwaysOnTop(true);
         setVisible(true);
 
         handler.openExplorer();
