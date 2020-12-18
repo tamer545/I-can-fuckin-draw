@@ -2,6 +2,7 @@ package actions;
 
 import gui.Draw;
 import gui.Gui;
+import gui.SaveFileView;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,10 +15,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class KeyHandler implements KeyListener {
     private int colorChooser = ThreadLocalRandom.current().nextInt(0, 6);
-    private Draw draw = new Draw();
     public static boolean ovalMode = false;
     public static boolean rectMode = false;
-
+    private String fileName;
+    private String filePath;
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -74,36 +75,49 @@ public class KeyHandler implements KeyListener {
                 rectMode = false;
             }
             case KeyEvent.VK_P -> {
-                BufferedImage screencapture;
                 try {
-
-                    screencapture = new Robot().createScreenCapture(
-                            new Rectangle(Gui.x + 230, Gui.y + 140, Gui.width - 240, Gui.height - 160));
-
-
-                    File file = new File((System.getProperty("user.home")), "Desktop\\Screencapture by Tamer.png");
-                    ImageIO.write(screencapture, "png", file);
-
-                } catch (AWTException awtException) {
+                    new SaveFileView(this);
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-                System.out.println("Picture succesfully saved");
-
             }
             case KeyEvent.VK_E -> Draw.color = Color.GRAY;
             case KeyEvent.VK_NUMPAD0 -> Draw.color = Color.BLACK;
             case KeyEvent.VK_NUMPAD1 -> Draw.color = Color.RED;
             case KeyEvent.VK_NUMPAD2 -> Draw.color = Color.ORANGE;
             case KeyEvent.VK_NUMPAD3 -> Draw.color = Color.WHITE;
-            case KeyEvent.VK_NUMPAD4 -> Draw.color = Color.GRAY;
+            case KeyEvent.VK_NUMPAD4 -> Draw.color = Color.DARK_GRAY;
             case KeyEvent.VK_NUMPAD5 -> Draw.color = Color.GREEN;
             case KeyEvent.VK_NUMPAD6 -> Draw.color = Color.PINK;
             case KeyEvent.VK_NUMPAD7 -> Draw.color = Color.BLUE;
 
 
-
         }
+    }
+
+    public void makeScreenshot() {
+        BufferedImage screencapture;
+        Gui.jf.requestFocus();
+        try {
+            screencapture = new Robot().createScreenCapture(
+                    new Rectangle(Gui.x + 230, Gui.y + 140, Gui.width - 240, Gui.height - 160));
+
+
+            File file = new File(filePath + "\\" + fileName + ".png");
+            ImageIO.write(screencapture, "png", file);
+
+        } catch (AWTException awtException) {
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        System.out.println("Picture succesfully saved");
+
+
+    }
+
+    public void openExplorer() throws IOException {
+        Runtime.getRuntime().exec("explorer C:\bin");
     }
 
     @Override
@@ -114,6 +128,14 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
 

@@ -10,7 +10,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 public class Gui {
-    private JFrame jf;
+    public static JFrame jf;
     private Draw draw;
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static int x, y, width, height;
@@ -72,5 +72,4 @@ public class Gui {
 
 
     }
-
 }
