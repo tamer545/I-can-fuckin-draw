@@ -15,7 +15,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class KeyHandler implements KeyListener {
     private int colorChooser = ThreadLocalRandom.current().nextInt(0, 6);
     private Draw draw = new Draw();
-    private Graphics g;
     public static boolean ovalMode = false;
     public static boolean rectMode = false;
 
@@ -50,8 +49,7 @@ public class KeyHandler implements KeyListener {
                         System.out.println("Color: BLUE");
                     }
                 }
-                draw.paintComponents(g);
-                colorChooser = ThreadLocalRandom.current().nextInt(0, 5);
+                colorChooser = ThreadLocalRandom.current().nextInt(0, 6);
             }
             case KeyEvent.VK_1 -> Draw.pensize = 2;
             case KeyEvent.VK_2 -> Draw.pensize = 4;
@@ -70,6 +68,10 @@ public class KeyHandler implements KeyListener {
             case KeyEvent.VK_R -> {
                 ovalMode = false;
                 rectMode = true;
+            }
+            case KeyEvent.VK_S -> {
+                ovalMode = false;
+                rectMode = false;
             }
             case KeyEvent.VK_P -> {
                 BufferedImage screencapture;

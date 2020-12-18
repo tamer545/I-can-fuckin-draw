@@ -3,6 +3,8 @@ package gui;
 import actions.KeyHandler;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -56,6 +58,7 @@ public class Gui {
         drawPanel.setLocation(200,100);
         drawPanel.setSize(screenSize.width - 200, screenSize.height - 100);
         drawPanel.setVisible(true);
+
         jf.add(drawPanel);
 
         jf.add(draw);
