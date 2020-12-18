@@ -28,6 +28,7 @@ public class Draw extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        int xoff = 20;
 
         int wordChooser = ThreadLocalRandom.current().nextInt(0, 7);
         String[] words = {"Tree", "Car", "Cow", "House", "Tamer", "Horse", "Dog", "Herblingen"};
@@ -35,17 +36,17 @@ public class Draw extends JPanel {
 
         g2d.setFont(new Font("Arial", Font.HANGING_BASELINE, 12));
 
-        g2d.drawString("Numpad 0: BLACK", 1750, 25);
-        g2d.drawString("Numpad 1: RED", 1750, 75);
-        g2d.drawString("Numpad 2: ORANGE", 1750, 125);
-        g2d.drawString("Numpad 3: WHITE", 1750, 175);
-        g2d.drawString("Numpad 4: GRAY", 1750, 225);
-        g2d.drawString("Numpad 5: GREEN", 1750, 275);
-        g2d.drawString("Numpad 6: PINK", 1750, 325);
-        g2d.drawString("Numpad 7: BLUE", 1750, 375);
+        g2d.drawString("Numpad 0: BLACK", xoff, 25);
+        g2d.drawString("Numpad 1: RED", xoff, 75);
+        g2d.drawString("Numpad 2: ORANGE",xoff, 125);
+        g2d.drawString("Numpad 3: WHITE", xoff, 175);
+        g2d.drawString("Numpad 4: GRAY", xoff, 225);
+        g2d.drawString("Numpad 5: GREEN", xoff, 275);
+        g2d.drawString("Numpad 6: PINK", xoff, 325);
+        g2d.drawString("Numpad 7: BLUE", xoff, 375);
 
-        g2d.drawString("O: Oval Mode", 1750, 525);
-        g2d.drawString("R: Rect Mode", 1750, 575);
+        g2d.drawString("O: Oval Mode", xoff, 525);
+        g2d.drawString("R: Rect Mode", xoff, 575);
 
         g2d.setFont(new Font("Arial", Font.HANGING_BASELINE, 36));
         g2d.drawString(words[wordChooser], 900, 75);
@@ -86,14 +87,15 @@ public class Draw extends JPanel {
         public void draw() {
             g2d.setStroke(new BasicStroke(pensize));
             g2d.setColor(color);
-            if (KeyHandler.ovalMode) {
-                g2d.drawOval(x1, y1, x2, y2);
-            } else if (KeyHandler.rectMode) {
-                g2d.drawRect(x1, y1, x2, y2);
-            } else {
-                g2d.drawLine(x1, y1, x2, y2);
+            if (x1 > 200 && y1 > 100) {
+                if (KeyHandler.ovalMode) {
+                    g2d.drawOval(x1, y1, x2, y2);
+                } else if (KeyHandler.rectMode) {
+                    g2d.drawRect(x1, y1, x2, y2);
+                } else {
+                    g2d.drawLine(x1, y1, x2, y2);
+                }
             }
-
             x2 = x1;
             y2 = y1;
         }

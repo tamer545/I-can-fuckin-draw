@@ -76,7 +76,7 @@ public class KeyHandler implements KeyListener {
                 try {
 
                     screencapture = new Robot().createScreenCapture(
-                            new Rectangle(Gui.x + 50, Gui.y + 40, Gui.width - 70, Gui.height - 50));
+                            new Rectangle(Gui.x + 230, Gui.y + 140, Gui.width - 240, Gui.height - 160));
 
 
                     File file = new File((System.getProperty("user.home")), "Desktop\\Screencapture by Tamer.png");

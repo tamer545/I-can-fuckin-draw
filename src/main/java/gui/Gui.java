@@ -51,6 +51,13 @@ public class Gui {
         draw.setBounds(0, 0, jf.getWidth(), jf.getHeight());
         draw.setVisible(true);
 
+        JPanel drawPanel = new JPanel();
+        drawPanel.setBackground(Color.GRAY);
+        drawPanel.setLocation(200,100);
+        drawPanel.setSize(screenSize.width - 200, screenSize.height - 100);
+        drawPanel.setVisible(true);
+        jf.add(drawPanel);
+
         jf.add(draw);
         jf.requestFocus();
         jf.setVisible(true);
