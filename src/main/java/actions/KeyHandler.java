@@ -91,6 +91,7 @@ public class KeyHandler implements KeyListener {
                 System.out.println("Picture succesfully saved");
 
             }
+            case KeyEvent.VK_E -> Draw.color = Color.GRAY;
             case KeyEvent.VK_NUMPAD0 -> Draw.color = Color.BLACK;
             case KeyEvent.VK_NUMPAD1 -> Draw.color = Color.RED;
             case KeyEvent.VK_NUMPAD2 -> Draw.color = Color.ORANGE;

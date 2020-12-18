@@ -30,15 +30,16 @@ public class Draw extends JPanel {
         super.paintComponent(g);
         int xoff = 20;
 
-        int wordChooser = ThreadLocalRandom.current().nextInt(0, 7);
-        String[] words = {"Tree", "Car", "Cow", "House", "Tamer", "Horse", "Dog", "Herblingen"};
+        String[] words = {"Tree", "Car", "Cow", "House", "Captain", "Horse", "Dog", "Penguin", "Egg", "Pizza"};
+        int wordChooser = ThreadLocalRandom.current().nextInt(0, words.length - 1);
+
         g2d = (Graphics2D) g;
 
         g2d.setFont(new Font("Arial", Font.HANGING_BASELINE, 12));
 
         g2d.drawString("Numpad 0: BLACK", xoff, 25);
         g2d.drawString("Numpad 1: RED", xoff, 75);
-        g2d.drawString("Numpad 2: ORANGE",xoff, 125);
+        g2d.drawString("Numpad 2: ORANGE", xoff, 125);
         g2d.drawString("Numpad 3: WHITE", xoff, 175);
         g2d.drawString("Numpad 4: GRAY", xoff, 225);
         g2d.drawString("Numpad 5: GREEN", xoff, 275);
@@ -51,6 +52,7 @@ public class Draw extends JPanel {
 
         g2d.setFont(new Font("Arial", Font.HANGING_BASELINE, 36));
         g2d.drawString(words[wordChooser], 900, 75);
+
 
     }
 
