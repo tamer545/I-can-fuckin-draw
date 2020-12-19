@@ -62,6 +62,7 @@ public class KeyHandler extends Component implements KeyListener {
             case KeyEvent.VK_8 -> Draw.pensize = 16;
             case KeyEvent.VK_9 -> Draw.pensize = 18;
             case KeyEvent.VK_0 -> Draw.pensize = 36;
+
             case KeyEvent.VK_O -> {
                 rectMode = false;
                 ovalMode = true;
@@ -77,6 +78,7 @@ public class KeyHandler extends Component implements KeyListener {
             }
             case KeyEvent.VK_P -> new SaveFileView(this);
             case KeyEvent.VK_E -> Draw.color = Color.GRAY;
+
             case KeyEvent.VK_NUMPAD0 -> Draw.color = Color.BLACK;
             case KeyEvent.VK_NUMPAD1 -> Draw.color = Color.RED;
             case KeyEvent.VK_NUMPAD2 -> Draw.color = Color.ORANGE;
@@ -101,8 +103,8 @@ public class KeyHandler extends Component implements KeyListener {
             File file = new File(filePath + "\\" + fileName + ".png");
             ImageIO.write(screencapture, "png", file);
 
-        } catch (IOException | AWTException ioException) {
-            ioException.printStackTrace();
+        } catch (IOException | AWTException exception) {
+            exception.printStackTrace();
         }
 
         System.out.println("Picture succesfully saved");
