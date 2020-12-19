@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
+/**
+ * Creates the GUI
+ */
 public class Gui {
     public static JFrame jf;
     private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

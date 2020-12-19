@@ -7,6 +7,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
+/**
+ * @Autor C357375
+ * Creates the GUI if you want to save the File
+ */
 public class SaveFileView extends JFrame {
     private JTextField enterFileNameField;
     private JButton saveButton;
@@ -49,11 +53,10 @@ public class SaveFileView extends JFrame {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 filepath = fc.getSelectedFile();
             }
-            try {
+            if (filepath != null) {
                 pathLabel.setText(filepath.toString());
-            }catch (NullPointerException exception){
-                System.out.println("Just ignore it (Nullpointer)");
             }
+
         });
 
         enterFileNameField.addKeyListener(new KeyAdapter() {

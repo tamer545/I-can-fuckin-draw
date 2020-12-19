@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * KeyHandler for the main GUI
+ */
 public class KeyHandler extends Component implements KeyListener {
     private int colorChooser = ThreadLocalRandom.current().nextInt(0, 6);
     public static boolean ovalMode = false;

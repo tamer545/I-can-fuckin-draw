@@ -8,7 +8,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.concurrent.ThreadLocalRandom;
 
-
+/**
+ * Draws everything
+ */
 public class Draw extends JPanel {
     public static Color color;
     public static int pensize = 2;
@@ -24,6 +26,9 @@ public class Draw extends JPanel {
 
     }
 
+    /**
+     * Paints the GUI
+     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         int xoff = 20;
@@ -60,6 +65,9 @@ public class Draw extends JPanel {
     }
 
 
+    /**
+     * Checks the Mouse-Pointer coordinates and draws there
+     */
     private class MyMouseHandler extends MouseAdapter {
         int x1, x2, y1, y2;
 
