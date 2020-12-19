@@ -13,12 +13,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class KeyHandler implements KeyListener {
+public class KeyHandler extends Component implements KeyListener {
     private int colorChooser = ThreadLocalRandom.current().nextInt(0, 6);
     public static boolean ovalMode = false;
     public static boolean rectMode = false;
     private String fileName;
-    private String filePath;
+    private File filePath;
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -75,13 +75,7 @@ public class KeyHandler implements KeyListener {
                 ovalMode = false;
                 rectMode = false;
             }
-            case KeyEvent.VK_P -> {
-                try {
-                    new SaveFileView(this);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-            }
+            case KeyEvent.VK_P -> new SaveFileView(this);
             case KeyEvent.VK_E -> Draw.color = Color.GRAY;
             case KeyEvent.VK_NUMPAD0 -> Draw.color = Color.BLACK;
             case KeyEvent.VK_NUMPAD1 -> Draw.color = Color.RED;
@@ -99,26 +93,21 @@ public class KeyHandler implements KeyListener {
     public void makeScreenshot() {
         BufferedImage screencapture;
         Gui.jf.requestFocus();
+
         try {
             screencapture = new Robot().createScreenCapture(
                     new Rectangle(Gui.x + 230, Gui.y + 140, Gui.width - 240, Gui.height - 160));
 
-
             File file = new File(filePath + "\\" + fileName + ".png");
             ImageIO.write(screencapture, "png", file);
 
-        } catch (AWTException awtException) {
-        } catch (IOException ioException) {
+        } catch (IOException | AWTException ioException) {
             ioException.printStackTrace();
         }
 
         System.out.println("Picture succesfully saved");
 
 
-    }
-
-    public void openExplorer() throws IOException {
-        Runtime.getRuntime().exec("explorer C:\bin");
     }
 
     @Override
@@ -135,7 +124,7 @@ public class KeyHandler implements KeyListener {
         this.fileName = fileName;
     }
 
-    public void setFilePath(String filePath) {
+    public void setFilePath(File filePath) {
         this.filePath = filePath;
     }
 

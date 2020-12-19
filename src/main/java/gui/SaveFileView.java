@@ -3,16 +3,18 @@ package gui;
 import actions.KeyHandler;
 
 import javax.swing.*;
-import java.io.IOException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.File;
 
 public class SaveFileView extends JFrame {
     private JTextField enterFileNameField;
     private JButton saveButton;
     private JButton cancelButton;
     private JPanel mainPanel;
-    private JTextField filePathField;
+    private File filepath;
 
-    public SaveFileView(KeyHandler handler) throws IOException {
+    public SaveFileView(KeyHandler handler) {
         super("Save File");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(mainPanel);
@@ -21,13 +23,21 @@ public class SaveFileView extends JFrame {
         setAlwaysOnTop(true);
         setVisible(true);
 
-        handler.openExplorer();
+        JFileChooser fc = new JFileChooser();
+        fc.setVisible(true);
+        fc.setCurrentDirectory(new java.io.File("C:\\Users")); // start at application current directory
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnVal = fc.showSaveDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            filepath = fc.getSelectedFile();
+        }
 
         cancelButton.addActionListener(e -> dispose());
         saveButton.addActionListener(e -> {
             setVisible(false);
             handler.setFileName(enterFileNameField.getText());
-            handler.setFilePath(filePathField.getText());
+            handler.setFilePath(filepath);
             dispose();
             try {
                 Thread.sleep(1000);
@@ -36,6 +46,18 @@ public class SaveFileView extends JFrame {
             }
             handler.makeScreenshot();
 
+
+        });
+        enterFileNameField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    saveButton.doClick();
+                }
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    cancelButton.doClick();
+                }
+            }
         });
     }
 }

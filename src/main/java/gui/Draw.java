@@ -6,19 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Draw extends JPanel {
     public static Color color;
     public static int pensize = 2;
-    private MyMouseHandler mouseHandler;
     private Graphics2D g2d;
 
     public Draw() {
 
-        mouseHandler = new MyMouseHandler();
+        MyMouseHandler mouseHandler = new MyMouseHandler();
 
         this.addMouseListener(mouseHandler);
         this.addMouseMotionListener(mouseHandler);
@@ -35,7 +33,7 @@ public class Draw extends JPanel {
 
         g2d = (Graphics2D) g;
 
-        g2d.setFont(new Font("Arial", Font.HANGING_BASELINE, 12));
+        g2d.setFont(new Font("Arial", Font.ITALIC, 12));
 
         g2d.drawString("Numpad 0: BLACK", xoff, 25);
         g2d.drawString("Numpad 1: RED", xoff, 75);
@@ -51,7 +49,7 @@ public class Draw extends JPanel {
         g2d.drawString("E: Erase Mode", xoff, 625);
         g2d.drawString("S: Standard Mode", xoff, 675);
 
-        g2d.setFont(new Font("Arial", Font.HANGING_BASELINE, 36));
+        g2d.setFont(new Font("Arial", Font.ITALIC, 36));
         g2d.drawString(words[wordChooser], 800, 75);
 
 

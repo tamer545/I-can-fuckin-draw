@@ -3,16 +3,13 @@ package gui;
 import actions.KeyHandler;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 public class Gui {
     public static JFrame jf;
-    private Draw draw;
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static int x, y, width, height;
 
     public void create() {
@@ -49,13 +46,13 @@ public class Gui {
         jf.setLayout(null);
         jf.addKeyListener(new KeyHandler());
 
-        draw = new Draw();
+        Draw draw = new Draw();
         draw.setBounds(0, 0, jf.getWidth(), jf.getHeight());
         draw.setVisible(true);
 
         JPanel drawPanel = new JPanel();
         drawPanel.setBackground(Color.GRAY);
-        drawPanel.setLocation(200,100);
+        drawPanel.setLocation(200, 100);
         drawPanel.setSize(screenSize.width - 200, screenSize.height - 100);
         drawPanel.setVisible(true);
 
