@@ -3,8 +3,6 @@ package gui;
 import actions.KeyHandler;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -17,7 +15,6 @@ public class SaveFileView extends JFrame {
     private JButton choosePathButton;
     private JLabel pathLabel;
     private File filepath;
-    private JFileChooser fc;
 
     public SaveFileView(KeyHandler handler) {
         super("Save File");

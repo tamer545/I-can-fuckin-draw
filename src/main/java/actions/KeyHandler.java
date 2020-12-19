@@ -107,7 +107,7 @@ public class KeyHandler extends Component implements KeyListener {
             exception.printStackTrace();
         }
 
-        System.out.println("Picture succesfully saved");
+        System.out.println("Picture successfully saved");
 
 
     }
