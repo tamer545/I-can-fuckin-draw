@@ -4,6 +4,8 @@ import actions.KeyHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -12,6 +14,7 @@ import java.awt.event.ComponentListener;
  */
 public class Gui {
     public static JFrame jf;
+    private Draw draw;
     private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static int x, y, width, height;
 
@@ -49,17 +52,18 @@ public class Gui {
         jf.setLayout(null);
         jf.addKeyListener(new KeyHandler());
 
-        Draw draw = new Draw();
+        draw = new Draw();
         draw.setBounds(0, 0, jf.getWidth(), jf.getHeight());
         draw.setVisible(true);
 
         JPanel drawPanel = new JPanel();
-        drawPanel.setBackground(Color.GRAY);
+        drawPanel.setBackground(new Color(211, 211, 211));
         drawPanel.setLocation(200, 100);
         drawPanel.setSize(screenSize.width - 200, screenSize.height - 100);
         drawPanel.setVisible(true);
 
         //createButtons();
+        //createCheckBox();
 
         jf.add(drawPanel);
         jf.add(draw);
@@ -73,7 +77,26 @@ public class Gui {
 
 
     }
-    public void createButtons(){
+
+    public void createCheckBox() {
+        JCheckBox showWord = new JCheckBox();
+        showWord.setLocation(1350, 25);
+        showWord.setText("Show Word");
+        showWord.setSize(100, 50);
+        showWord.setEnabled(true);
+        showWord.setVisible(true);
+
+        showWord.addActionListener(e -> {
+            if (showWord.isSelected()) {
+                draw.setDrawWord(true);
+            } else {
+                draw.setDrawWord(false);
+            }
+        });
+        jf.add(showWord);
+    }
+
+    public void createButtons() {
         JButton redButton = new JButton();
         redButton.setBackground(Color.RED);
         redButton.setLocation(200, 25);

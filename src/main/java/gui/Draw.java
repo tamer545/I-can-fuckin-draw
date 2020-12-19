@@ -15,6 +15,7 @@ public class Draw extends JPanel {
     public static Color color;
     public static int pensize = 2;
     private Graphics2D g2d;
+    private boolean drawWord = false;
 
     public Draw() {
 
@@ -54,10 +55,16 @@ public class Draw extends JPanel {
         g2d.drawString("E: Erase Mode", xoff, 625);
         g2d.drawString("S: Standard Mode", xoff, 675);
 
-        g2d.setFont(new Font("Arial", Font.ITALIC, 36));
-        g2d.drawString(words[wordChooser], 800, 75);
+        if (drawWord) {
+            g2d.setFont(new Font("Arial", Font.ITALIC, 36));
+            g2d.drawString(words[wordChooser], 800, 75);
+        }
 
 
+    }
+
+    public void setDrawWord(boolean drawWord) {
+        this.drawWord = drawWord;
     }
 
     private void setUpDrawingGraphics() {

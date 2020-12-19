@@ -43,12 +43,11 @@ public class SaveFileView extends JFrame {
             handler.makeScreenshot();
 
 
-
         });
         choosePathButton.addActionListener(e -> {
             JFileChooser fc = new JFileChooser();
             fc.setVisible(true);
-            fc.setCurrentDirectory(new File("C:\\Users")); // start at application current directory
+            fc.setCurrentDirectory(new File(System.getProperty("user.home"))); // start at application current directory
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int returnVal = fc.showSaveDialog(mainPanel);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
