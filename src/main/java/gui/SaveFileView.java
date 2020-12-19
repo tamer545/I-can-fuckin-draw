@@ -3,6 +3,8 @@ package gui;
 import actions.KeyHandler;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -12,7 +14,10 @@ public class SaveFileView extends JFrame {
     private JButton saveButton;
     private JButton cancelButton;
     private JPanel mainPanel;
+    private JButton choosePathButton;
+    private JLabel pathLabel;
     private File filepath;
+    private JFileChooser fc;
 
     public SaveFileView(KeyHandler handler) {
         super("Save File");
@@ -22,16 +27,6 @@ public class SaveFileView extends JFrame {
         setLocationRelativeTo(null);
         setAlwaysOnTop(true);
         setVisible(true);
-
-        JFileChooser fc = new JFileChooser();
-        fc.setVisible(true);
-        fc.setCurrentDirectory(new java.io.File("C:\\Users")); // start at application current directory
-        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int returnVal = fc.showSaveDialog(this);
-
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            filepath = fc.getSelectedFile();
-        }
 
         cancelButton.addActionListener(e -> dispose());
         saveButton.addActionListener(e -> {
@@ -48,6 +43,18 @@ public class SaveFileView extends JFrame {
 
 
         });
+        choosePathButton.addActionListener(e -> {
+            JFileChooser fc = new JFileChooser();
+            fc.setVisible(true);
+            fc.setCurrentDirectory(new File("C:\\Users")); // start at application current directory
+            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            int returnVal = fc.showSaveDialog(mainPanel);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                filepath = fc.getSelectedFile();
+            }
+            pathLabel.setText(filepath.toString());
+        });
+
         enterFileNameField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -59,5 +66,6 @@ public class SaveFileView extends JFrame {
                 }
             }
         });
+
     }
 }
