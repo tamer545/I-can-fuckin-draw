@@ -80,7 +80,10 @@ public class KeyHandler extends Component implements KeyListener {
                 rectMode = false;
             }
             case KeyEvent.VK_P -> new SaveFileView(this);
-            case KeyEvent.VK_E -> Draw.color = Color.GRAY;
+            case KeyEvent.VK_E -> {
+                Draw.color = new Color(211, 211, 211);
+                Draw.pensize = 136;
+            }
 
             case KeyEvent.VK_NUMPAD0 -> Draw.color = Color.BLACK;
             case KeyEvent.VK_NUMPAD1 -> Draw.color = Color.RED;
