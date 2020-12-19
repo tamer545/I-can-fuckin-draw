@@ -55,16 +55,16 @@ public class KeyHandler extends Component implements KeyListener {
                 }
                 colorChooser = ThreadLocalRandom.current().nextInt(0, 6);
             }
-            case KeyEvent.VK_1 -> Draw.pensize = 2;
-            case KeyEvent.VK_2 -> Draw.pensize = 6;
-            case KeyEvent.VK_3 -> Draw.pensize = 10;
-            case KeyEvent.VK_4 -> Draw.pensize = 14;
-            case KeyEvent.VK_5 -> Draw.pensize = 18;
-            case KeyEvent.VK_6 -> Draw.pensize = 22;
-            case KeyEvent.VK_7 -> Draw.pensize = 26;
-            case KeyEvent.VK_8 -> Draw.pensize = 30;
-            case KeyEvent.VK_9 -> Draw.pensize = 34;
-            case KeyEvent.VK_0 -> Draw.pensize = 68;
+            case KeyEvent.VK_1 -> Draw.pensize = 1;
+            case KeyEvent.VK_2 -> Draw.pensize = 2;
+            case KeyEvent.VK_3 -> Draw.pensize = 4;
+            case KeyEvent.VK_4 -> Draw.pensize = 6;
+            case KeyEvent.VK_5 -> Draw.pensize = 8;
+            case KeyEvent.VK_6 -> Draw.pensize = 10;
+            case KeyEvent.VK_7 -> Draw.pensize = 12;
+            case KeyEvent.VK_8 -> Draw.pensize = 14;
+            case KeyEvent.VK_9 -> Draw.pensize = 16;
+            case KeyEvent.VK_0 -> Draw.pensize = 18;
 
             case KeyEvent.VK_O -> {
                 rectMode = false;

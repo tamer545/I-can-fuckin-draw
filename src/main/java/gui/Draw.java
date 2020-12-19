@@ -15,7 +15,7 @@ public class Draw extends JPanel {
     public static Color color;
     public static int pensize = 2;
     private Graphics2D g2d;
-    private boolean drawWord = false;
+    private boolean drawWord = true;
 
     public Draw() {
 
@@ -54,6 +54,7 @@ public class Draw extends JPanel {
         g2d.drawString("R: Rect Mode", xoff, 575);
         g2d.drawString("E: Erase Mode", xoff, 625);
         g2d.drawString("S: Standard Mode", xoff, 675);
+
 
         if (drawWord) {
             g2d.setFont(new Font("Arial", Font.ITALIC, 36));
@@ -97,7 +98,6 @@ public class Draw extends JPanel {
             y1 = e.getY();
 
             draw();
-
 
         }
 
