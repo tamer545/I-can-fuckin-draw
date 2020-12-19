@@ -58,8 +58,8 @@ public class Gui {
 
         JPanel drawPanel = new JPanel();
         drawPanel.setBackground(new Color(211, 211, 211));
-        drawPanel.setLocation(200, 100);
-        drawPanel.setSize(screenSize.width - 200, screenSize.height - 100);
+        drawPanel.setLocation(200, 0);
+        drawPanel.setSize(screenSize.width - 200, screenSize.height);
         drawPanel.setVisible(true);
 
         //createButtons();

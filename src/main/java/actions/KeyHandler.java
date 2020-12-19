@@ -104,7 +104,7 @@ public class KeyHandler extends Component implements KeyListener {
 
         try {
             screencapture = new Robot().createScreenCapture(
-                    new Rectangle(Gui.x + 230, Gui.y + 140, Gui.width - 240, Gui.height - 160));
+                    new Rectangle(Gui.x + 210, Gui.y + 20, Gui.width - 220, Gui.height - 40));
 
             File file = new File(filePath + "\\" + fileName + ".png");
             ImageIO.write(screencapture, "png", file);

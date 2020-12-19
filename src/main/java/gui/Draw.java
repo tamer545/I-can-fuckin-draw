@@ -32,12 +32,15 @@ public class Draw extends JPanel {
      */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g2d = (Graphics2D) g;
+
+        drawText();
+    }
+
+    public void drawText() {
         int xoff = 20;
 
-        String[] words = {"Tree", "Car", "Cow", "House", "Captain", "Horse", "Dog", "Penguin", "Egg", "Pizza"};
-        int wordChooser = ThreadLocalRandom.current().nextInt(0, words.length - 1);
-
-        g2d = (Graphics2D) g;
+        g2d.setColor(Color.BLACK);
 
         g2d.setFont(new Font("Arial", Font.ITALIC, 12));
 
@@ -54,13 +57,6 @@ public class Draw extends JPanel {
         g2d.drawString("R: Rect Mode", xoff, 575);
         g2d.drawString("E: Erase Mode", xoff, 625);
         g2d.drawString("S: Standard Mode", xoff, 675);
-
-
-        if (drawWord) {
-            g2d.setFont(new Font("Arial", Font.ITALIC, 36));
-            g2d.drawString(words[wordChooser], 800, 75);
-        }
-
 
     }
 
@@ -90,6 +86,7 @@ public class Draw extends JPanel {
             setUpDrawingGraphics();
 
             draw();
+            drawText();
         }
 
         @Override
@@ -98,13 +95,14 @@ public class Draw extends JPanel {
             y1 = e.getY();
 
             draw();
+            drawText();
 
         }
 
         public void draw() {
             g2d.setStroke(new BasicStroke(pensize));
             g2d.setColor(color);
-            if (x1 > 200 && y1 > 100) {
+            if (x1 > 200) {
                 if (KeyHandler.ovalMode) {
                     g2d.drawOval(x1, y1, x2, y2);
                 } else if (KeyHandler.rectMode) {
