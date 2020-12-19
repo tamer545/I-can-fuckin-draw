@@ -49,7 +49,11 @@ public class SaveFileView extends JFrame {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 filepath = fc.getSelectedFile();
             }
-            pathLabel.setText(filepath.toString());
+            try {
+                pathLabel.setText(filepath.toString());
+            }catch (NullPointerException exception){
+                System.out.println("Just ignore it (Nullpointer)");
+            }
         });
 
         enterFileNameField.addKeyListener(new KeyAdapter() {
