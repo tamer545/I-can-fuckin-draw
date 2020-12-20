@@ -60,10 +60,6 @@ public class Draw extends JPanel {
 
     }
 
-    public void setDrawWord(boolean drawWord) {
-        this.drawWord = drawWord;
-    }
-
     private void setUpDrawingGraphics() {
         g2d = (Graphics2D) getGraphics();
     }
@@ -86,7 +82,6 @@ public class Draw extends JPanel {
             setUpDrawingGraphics();
 
             draw();
-            drawText();
         }
 
         @Override
@@ -95,8 +90,6 @@ public class Draw extends JPanel {
             y1 = e.getY();
 
             draw();
-            drawText();
-
         }
 
         public void draw() {
@@ -113,6 +106,8 @@ public class Draw extends JPanel {
             }
             x2 = x1;
             y2 = y1;
+
+            drawText();
         }
     }
 

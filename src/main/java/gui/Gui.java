@@ -63,7 +63,6 @@ public class Gui {
         drawPanel.setVisible(true);
 
         //createButtons();
-        //createCheckBox();
 
         jf.add(drawPanel);
         jf.add(draw);
@@ -76,24 +75,6 @@ public class Gui {
         width = jf.getWidth();
 
 
-    }
-
-    public void createCheckBox() {
-        JCheckBox showWord = new JCheckBox();
-        showWord.setLocation(1350, 25);
-        showWord.setText("Show Word");
-        showWord.setSize(100, 50);
-        showWord.setEnabled(true);
-        showWord.setVisible(true);
-
-        showWord.addActionListener(e -> {
-            if (showWord.isSelected()) {
-                draw.setDrawWord(true);
-            } else {
-                draw.setDrawWord(false);
-            }
-        });
-        jf.add(showWord);
     }
 
     public void createButtons() {
